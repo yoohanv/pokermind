@@ -1029,8 +1029,13 @@ window.addEventListener('resize',()=>{resizeCv();initPts();});
 
 // ── Pages ──
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const target = document.getElementById('page-'+id);
+  target.classList.add('active');
+  target.style.display = 'block';
 }
 
 // ── Tab switch ──
