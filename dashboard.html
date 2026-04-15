@@ -877,7 +877,10 @@
         <div class="panel">
           <div class="panel-header">
             <span class="panel-title">Historique des mains</span>
-            <span class="panel-badge" id="handCount">0 mains</span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="panel-badge" id="handCount">0 mains</span>
+              <a href="analyse.html" style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#000;background:var(--green);padding:5px 12px;border-radius:6px;text-decoration:none;letter-spacing:0.5px;transition:all 0.2s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='var(--green)'">+ Analyser une main</a>
+            </div>
           </div>
 
           <!-- Formulaire ajout -->
