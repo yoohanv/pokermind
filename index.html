@@ -622,6 +622,114 @@ footer {
   footer { flex-direction: column; gap: 20px; text-align: center; }
 }
 
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(8,9,9,0.3) 0%, rgba(8,9,9,0.0) 40%, rgba(8,9,9,0.7) 85%, rgba(8,9,9,1) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#hero > *:not(.hero-video):not(.hero-video-overlay):not(.hero-grid) {
+  position: relative;
+  z-index: 1;
+}
+
+.chips-video-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+  aspect-ratio: 16/9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chips-video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chips-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8,9,9,0.5) 0%, transparent 60%);
+}
+
+/* ── PARALLAX VIDEO SECTION ── */
+.parallax-section {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.parallax-video {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,9,9,0.92) 0%,
+    rgba(8,9,9,0.65) 50%,
+    rgba(8,9,9,0.3) 100%
+  );
+  z-index: 1;
+}
+
+.parallax-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  max-width: 600px;
+}
+
+.parallax-content .section-label { margin-bottom: 16px; }
+
+.parallax-content h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.parallax-content p {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--muted2);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 32px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--black); }
@@ -650,6 +758,10 @@ footer {
 <!-- HERO -->
 <section id="hero">
   <div class="hero-grid"></div>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://res.cloudinary.com/dofo4le04/video/upload/cards_xokpfy.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
 
   <div class="hero-eyebrow">
     <span class="eyebrow-dot"></span>
@@ -732,6 +844,45 @@ footer {
       <div class="feat-num">06</div>
       <div class="feat-title">Communauté</div>
       <p class="feat-desc">Partagez vos mains, débattez de spots, progressez avec d'autres joueurs sérieux.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX VIDEO SECTION -->
+<div class="parallax-section" id="parallaxSection">
+  <video class="parallax-video" id="parallaxVideo" autoplay muted loop playsinline>
+    <source src="https://res.cloudinary.com/dofo4le04/video/upload/chips2_ypfd6f.mp4" type="video/mp4">
+  </video>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content reveal">
+    <p class="section-label">Votre progression</p>
+    <h2>Chaque session<br>compte.</h2>
+    <p>Uploadez vos mains après chaque session. PokerMind analyse vos décisions et vous dit exactement où vous perdez de l'EV.</p>
+    <a href="dashboard.html" class="btn-primary" style="display:inline-flex; width:fit-content;">
+      Analyser mes mains
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- VIDEO SECTION -->
+<section style="padding: 100px 48px; max-width: 900px; margin: 0 auto;">
+  <div class="reveal" style="text-align:center; margin-bottom: 48px;">
+    <p class="section-label">En action</p>
+    <h2 class="section-title" style="font-size: clamp(28px,3.5vw,44px);">Analysez chaque session</h2>
+  </div>
+  <div class="chips-video-wrap reveal">
+    <video autoplay muted loop playsinline>
+      <source src="https://res.cloudinary.com/dofo4le04/video/upload/chips_kmhbvc.mp4" type="video/mp4">
+    </video>
+    <div class="chips-video-overlay"></div>
+    <div style="position:absolute; bottom:24px; left:24px; z-index:2;">
+      <div style="font-size:13px; font-weight:600; color:#fff; margin-bottom:4px;">Chaque chip compte</div>
+      <div style="font-size:12px; font-weight:300; color:rgba(255,255,255,0.5);">Suivez votre bankroll et vos performances en temps réel</div>
     </div>
   </div>
 </section>
@@ -828,6 +979,24 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Parallax video ──
+const parallaxSection = document.getElementById('parallaxSection');
+const parallaxVideo = document.getElementById('parallaxVideo');
+
+if (parallaxSection && parallaxVideo) {
+  window.addEventListener('scroll', () => {
+    const rect = parallaxSection.getBoundingClientRect();
+    const sectionH = parallaxSection.offsetHeight;
+    const viewH = window.innerHeight;
+
+    if (rect.bottom > 0 && rect.top < viewH) {
+      const progress = (viewH - rect.top) / (viewH + sectionH);
+      const shift = (progress - 0.5) * 30;
+      parallaxVideo.style.transform = `translateY(${shift}%)`;
+    }
+  }, { passive: true });
+}
 </script>
 
 </body>
